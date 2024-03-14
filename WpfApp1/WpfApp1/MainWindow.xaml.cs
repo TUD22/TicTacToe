@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,11 +23,11 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        private Button[] btns = new Button[9];
+        private Button[] btns = new Button[16];
         private bool IsPlayerTurn { get; set; }
 
 
-        private int Counter {  get; set; }
+        private int Counter { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -49,15 +50,64 @@ namespace WpfApp1
                 btns[i].Content = '?';
             }
         }
-
+        char[,] lista = { {'0', '0', '0', '0'}, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }};
         private void btn_Click(object sender, RoutedEventArgs e)
         {
 
             var button = sender as Button;
-          
-            button.Background = IsPlayerTurn ? Brushes.DeepSkyBlue : Brushes.Firebrick;
+            int x = Grid.GetRow(button);
+            int y = Grid.GetColumn(button);
             button.IsEnabled = false;
-
+            //label = FindName("label") as Label;
+            char check = IsPlayerTurn ? 'o' : 'x';
+            lista[x, y] = check;
+            for (int i = 0; i <= 3;i++)
+            {
+                int wynik = 0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    if (lista[i, j] ==check)
+                    {
+                        wynik ++;
+                        if (wynik == 4)
+                        {
+                      
+                           // label.Content = "wygrał "+ check;
+                         
+                            break;
+                        }
+                    }
+                }
+                wynik = 0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    if (lista[j, i] == check)
+                    {
+                        wynik++;
+                        if (wynik == 4)
+                        {
+                            //label.Content = "wygrał " + check;
+                            break;
+                        }
+                    }
+                    
+                }
+                wynik = 0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    if (lista[j, j] == check)
+                    {
+                        wynik++;
+                        if (wynik == 4)
+                        {
+                           // label.Content = "wygrał " + check;
+                            break;
+                        }
+                    }
+                    
+                }
+            }
+            
             button.Content = IsPlayerTurn ? 'O' : 'X';
             IsPlayerTurn = !IsPlayerTurn;
         }
