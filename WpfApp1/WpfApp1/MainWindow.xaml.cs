@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -45,71 +46,99 @@ namespace WpfApp1
         {
             for (int i = 0; i < btns.Length; i++)
             {
+                
                 btns[i] = FindName($"btn{i}") as Button;
+                btns[i].IsEnabled = true;
                 btns[i].Background = Brushes.Tan;
                 btns[i].Content = '?';
+
+                
             }
         }
-        char[,] lista = { {'0', '0', '0', '0'}, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }};
-        private void btn_Click(object sender, RoutedEventArgs e)
-        {
+        
+        char[,] lista = {{'0', '0', '0', '0'}, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }};
+        int winx = 0;
+        int wino = 0;
 
+        private void btn_Click(object sender, RoutedEventArgs e)
+
+        {
             var button = sender as Button;
             int x = Grid.GetRow(button);
             int y = Grid.GetColumn(button);
-            button.IsEnabled = false;
-            //label = FindName("label") as Label;
-            char check = IsPlayerTurn ? 'o' : 'x';
+            button.IsEnabled = false;       
+            char check = IsPlayerTurn ? 'O' : 'X';
+            int wynik = 0;
             lista[x, y] = check;
-            for (int i = 0; i <= 3;i++)
+            void Update(int i, int j)
             {
-                int wynik = 0;
-                for (int j = 0; j <= 3; j++)
+                if (lista[i, j] == check)
                 {
-                    if (lista[i, j] ==check)
+                    wynik++;
+                    if (wynik == 4)
                     {
-                        wynik ++;
-                        if (wynik == 4)
+                        label.Content = "wygrał: "+ check;
+                        if (IsPlayerTurn)
                         {
-                      
-                           // label.Content = "wygrał "+ check;
-                         
-                            break;
+                            winx++;
                         }
-                    }
-                }
-                wynik = 0;
-                for (int j = 0; j <= 3; j++)
-                {
-                    if (lista[j, i] == check)
-                    {
-                        wynik++;
-                        if (wynik == 4)
+                        else
                         {
-                            //label.Content = "wygrał " + check;
-                            break;
+                            wino++;
                         }
-                    }
-                    
-                }
-                wynik = 0;
-                for (int j = 0; j <= 3; j++)
-                {
-                    if (lista[j, j] == check)
-                    {
-                        wynik++;
-                        if (wynik == 4)
+                        licznik.Content = wino + ":" + winx;
+                        for(int i2 = 0; i2 <= 3; i2++)
                         {
-                           // label.Content = "wygrał " + check;
-                            break;
+                            for(int i3 = 0;i3 <= 3; i3++)
+                            {
+                                lista[i2, i3] = '0';
+                            }
                         }
+                        InitializeBtnArray();
                     }
-                    
                 }
             }
-            
             button.Content = IsPlayerTurn ? 'O' : 'X';
             IsPlayerTurn = !IsPlayerTurn;
+            for (int i = 0; i <= 3;i++)
+            {
+                wynik = 0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    Update(i, j);
+                }
+                wynik=0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    Update(j, j);
+                }
+                wynik = 0;
+                for (int j = 0; j <= 3; j++)
+                {
+                    Update(j, i);
+                }
+            }
+
+            /*for (int i = 0; i <= 3; i++)
+            {
+                for (int j = 0; j <= 3; j++)
+                {
+                    if(lista[i, j] != '0')
+                    {
+                        label.Content = "remis";
+                    }
+                }
+            }*/
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeBtnArray();
+            wino = 0;
+            winx = 0;
+            licznik.Content = "0:0";
+            label.Content = "";
         }
     }
 }
