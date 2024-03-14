@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Tic Tac Toe" Height="800" Width="800" ResizeMode="NoResize">
-    <Grid>
+        Title="Tic Tac Toe" Height="900" Width="800" ResizeMode="NoResize">
+
+    <Grid VerticalAlignment="Bottom">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -35,6 +36,10 @@
         <Button x:Name="btn13" Content="?" Grid.Row="3" Grid.Column="1" FontSize="80" Click="btn_Click"/>
         <Button x:Name="btn14" Content="?" Grid.Row="3" Grid.Column="2" FontSize="80" Click="btn_Click"/>
         <Button x:Name="btn15" Content="?" Grid.Row="3" Grid.Column="3" FontSize="80" Click="btn_Click"/>
+        <Label Content="Gracz 1:" HorizontalAlignment="Left" Margin="25,-62,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.578"/>
+        <Label Grid.Column="3" Content="Gracz 2:" HorizontalAlignment="Left" Margin="48,-62,0,0" VerticalAlignment="Top"/>
+
+
 
     </Grid>
 </Window>
