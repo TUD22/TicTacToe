@@ -28,7 +28,7 @@ namespace WpfApp1
         private bool IsPlayerTurn { get; set; }
 
 
-        private int Counter { get; set; }
+    
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +39,6 @@ namespace WpfApp1
         private void NewGame()
         {
             IsPlayerTurn = true;
-            Counter = 0;
         }
 
         private void InitializeBtnArray()
@@ -87,14 +86,8 @@ namespace WpfApp1
                             wino++;
                         }
                         licznik.Content = wino + ":" + winx;
-                        for(int i2 = 0; i2 <= 3; i2++)
-                        {
-                            for(int i3 = 0;i3 <= 3; i3++)
-                            {
-                                lista[i2, i3] = '0';
-                            }
-                        }
                         InitializeBtnArray();
+                        lista = new char[,] { { '0', '0', '0', '0'}, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' } };
                     }
                 }
             }
@@ -118,17 +111,21 @@ namespace WpfApp1
                     Update(j, i);
                 }
             }
-
-            /*for (int i = 0; i <= 3; i++)
+            int remis = 0;
+            for (int i = 0; i <= 3; i++)
             {
                 for (int j = 0; j <= 3; j++)
                 {
-                    if(lista[i, j] != '0')
+                    if (lista[i, j] != '0')
                     {
-                        label.Content = "remis";
+                        remis++;
+                        if (remis == 16)
+                        {
+                            label.Content = "remis";
+                        }
                     }
                 }
-            }*/
+            }
 
         }
 
@@ -139,6 +136,7 @@ namespace WpfApp1
             winx = 0;
             licznik.Content = "0:0";
             label.Content = "";
+            lista = new char[,] { { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' }, { '0', '0', '0', '0' } };
         }
     }
 }

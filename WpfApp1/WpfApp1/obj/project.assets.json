@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Dominik\\.nuget\\packages\\": {}
+    "C:\\Users\\uczen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dominik\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\kolkoikrzyzyk.csproj",
+      "projectUniqueName": "C:\\Users\\uczen\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\kolkoikrzyzyk.csproj",
       "projectName": "kolkoikrzyzyk",
-      "projectPath": "C:\\Users\\Dominik\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\kolkoikrzyzyk.csproj",
-      "packagesPath": "C:\\Users\\Dominik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dominik\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\obj\\",
+      "projectPath": "C:\\Users\\uczen\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\kolkoikrzyzyk.csproj",
+      "packagesPath": "C:\\Users\\uczen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\uczen\\Source\\Repos\\TicTacToe\\WpfApp1\\WpfApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dominik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\uczen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
